@@ -32,7 +32,8 @@ export default function Page() {
                 href="https://www.figma.com/board/uxzlsXJBLRnGWrp0c19fiq/Elections-Workshop?node-id=98-683&t=vyC871jqpGjy2OIM-1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline underline-offset-2 hover:text-card-foreground transition-colors"
+                className="underline underline-offset-2 transition-colors"
+                style={{ color: "hsl(var(--link))" }}
               >
                 View Board
               </a>
@@ -92,6 +93,25 @@ export default function Page() {
               </div>
             ))}
           </div>
+        </section>
+        {/* Next Steps */}
+        <section className="mt-16">
+          <h2 className="font-serif text-2xl md:text-3xl font-bold mb-6 text-card-foreground">
+            Next Steps
+          </h2>
+          <p className="font-serif italic text-card-foreground leading-relaxed">
+            {"Nava and Hien will narrow to 2\u20133 MVP concepts and rapidly prototype/test using an AI-first approach. See "}
+            <a
+              href="https://docs.google.com/document/d/1gfyfqgP0eVj88dVL2_mNFXMUt3H-20HlNLzVABWAtVA/edit?tab=t.ejiaqmfhvfe5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 transition-colors"
+              style={{ color: "hsl(var(--link))" }}
+            >
+              research plan
+            </a>
+            .
+          </p>
         </section>
       </article>
     </main>

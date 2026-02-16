@@ -37,7 +37,10 @@ export function PersonaCard({ persona, expanded, onToggle }: PersonaCardProps) {
         <p className="font-serif text-card-foreground leading-relaxed">
           {persona.description}
         </p>
-        <p className="font-sans text-sm text-muted-foreground mt-4 flex items-center gap-1.5 group-hover:text-foreground transition-colors">
+        <p
+          className="font-sans text-sm mt-4 flex items-center gap-1.5 transition-colors hover:opacity-80"
+          style={{ color: "hsl(var(--link))" }}
+        >
           {expanded ? "Hide growth flywheel" : "View growth flywheel"}
           <ChevronRight
             className={`h-4 w-4 shrink-0 transition-transform duration-200 ${
