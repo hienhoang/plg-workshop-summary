@@ -32,7 +32,8 @@ export default function Page() {
                 href="https://www.figma.com/board/uxzlsXJBLRnGWrp0c19fiq/Elections-Workshop?node-id=98-683&t=vyC871jqpGjy2OIM-1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline underline-offset-2 hover:text-card-foreground transition-colors"
+                className="underline underline-offset-2 transition-colors"
+                style={{ color: "hsl(var(--link))" }}
               >
                 View Board
               </a>
