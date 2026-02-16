@@ -100,7 +100,7 @@ export default function Page() {
             Next Steps
           </h2>
           <p className="font-serif italic text-card-foreground leading-relaxed">
-            {"Nava and Hien will narrow to 2\u20133 MVP concepts and rapidly prototype/test using an AI-first approach. See "}
+            {"Nava and Hien will narrow ideas to 2\u20133 MVP concepts and rapidly prototype/test using an AI-first approach. See "}
             <a
               href="https://docs.google.com/document/d/1gfyfqgP0eVj88dVL2_mNFXMUt3H-20HlNLzVABWAtVA/edit?tab=t.ejiaqmfhvfe5"
               target="_blank"

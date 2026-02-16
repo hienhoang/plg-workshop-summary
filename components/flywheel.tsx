@@ -118,14 +118,30 @@ export function Flywheel({ steps }: FlywheelProps) {
               padding: "10px 8px",
             }}
           >
-            <span
-              className="font-sans text-[10px] font-bold uppercase tracking-widest mb-1"
-              style={{
-                color: i === 0 ? "hsl(var(--link))" : "hsl(var(--muted-foreground))",
-              }}
-            >
-              {label}
-            </span>
+            {nodes.map((node, i) => {
+              return (
+                <div
+                  key={i}
+                  className="absolute bg-card border-2 border-foreground flex flex-col items-center justify-center text-center"
+                  style={{
+                    width: nodeWidth,
+                    minHeight: nodeHalfH * 2,
+                    left: node.x - nodeHalfW,
+                    top: node.y - nodeHalfH,
+                    padding: "10px 8px",
+                  }}
+                >
+                  <span
+                    className="font-sans text-[10px] font-bold uppercase tracking-widest mb-1 text-muted-foreground"
+                  >
+                    {node.step.stage}
+                  </span>
+                  <span className="font-sans text-xs leading-snug text-card-foreground">
+                    {node.step.text}
+                  </span>
+                </div>
+              )
+            })}
             <span className="font-sans text-xs leading-snug text-card-foreground">
               {node.step}
             </span>
