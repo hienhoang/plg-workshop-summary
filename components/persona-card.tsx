@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronDown } from "lucide-react"
+import { ChevronRight } from "lucide-react"
 import { Flywheel } from "@/components/flywheel"
 import type { Persona } from "@/lib/persona-data"
 
@@ -25,7 +25,7 @@ export function PersonaCard({ persona, expanded, onToggle }: PersonaCardProps) {
             alt={`Illustration of ${persona.name}`}
             className="w-16 h-16 rounded-full border-2 border-foreground bg-muted shrink-0"
           />
-          <div className="flex-1">
+          <div>
             <h3 className="font-serif text-2xl md:text-3xl font-bold text-card-foreground">
               {persona.name}
             </h3>
@@ -33,17 +33,17 @@ export function PersonaCard({ persona, expanded, onToggle }: PersonaCardProps) {
               {persona.subtitle} &bull; Age {persona.age}
             </p>
           </div>
-          <ChevronDown
-            className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200 mt-1 ${
-              expanded ? "rotate-180" : ""
-            }`}
-          />
         </div>
         <p className="font-serif text-card-foreground leading-relaxed">
           {persona.description}
         </p>
-        <p className="font-sans text-sm text-muted-foreground mt-4 flex items-center gap-2 group-hover:text-foreground transition-colors">
+        <p className="font-sans text-sm text-muted-foreground mt-4 flex items-center gap-1.5 group-hover:text-foreground transition-colors">
           {expanded ? "Hide growth flywheel" : "View growth flywheel"}
+          <ChevronRight
+            className={`h-4 w-4 shrink-0 transition-transform duration-200 ${
+              expanded ? "rotate-90" : ""
+            }`}
+          />
         </p>
       </button>
 
