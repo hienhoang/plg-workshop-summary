@@ -5,10 +5,18 @@ import { personas } from "@/lib/persona-data"
 import { PersonaCard } from "@/components/persona-card"
 
 export function PersonasSection() {
-  const [expandedId, setExpandedId] = useState<string | null>(null)
+  const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set())
 
   function handleToggle(id: string) {
-    setExpandedId((prev) => (prev === id ? null : id))
+    setExpandedIds((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) {
+        next.delete(id)
+      } else {
+        next.add(id)
+      }
+      return next
+    })
   }
 
   return (
@@ -17,7 +25,7 @@ export function PersonasSection() {
         <PersonaCard
           key={persona.id}
           persona={persona}
-          expanded={expandedId === persona.id}
+          expanded={expandedIds.has(persona.id)}
           onToggle={() => handleToggle(persona.id)}
         />
       ))}
