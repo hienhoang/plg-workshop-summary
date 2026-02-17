@@ -20,7 +20,7 @@ export const personas: Persona[] = [
     description:
       "Suburban parent and PTA member who organizes through Facebook groups and WhatsApp chains. Motivated by community respect and tangible local wins on education and development.",
     loopSteps: [
-      { stage: "trigger", text: "Sees targeted ad while feeling uninformed about upcoming election" },
+      { stage: "trigger", text: "Feels uninformed about upcoming local election and wants to be prepared" },
       { stage: "create", text: "Creates personalized ballot to understand candidates and issues" },
       { stage: "reward", text: "Gains confidence and becomes go-to resource at PTA meetings" },
       { stage: "share", text: "Distributes voter guides through community networks" },
@@ -43,7 +43,7 @@ export const personas: Persona[] = [
     description:
       "Tech worker with 5k+ followers who creates political content daily across multiple platforms.",
     loopSteps: [
-      { stage: "trigger", text: "Wants to amplify advocacy content with data-driven recommendations" },
+      { stage: "trigger", text: "Wants to make advocacy content more actionable and data-driven" },
       { stage: "create", text: "Generates location-based voter guides using API tools with auto-populated hashtags" },
       { stage: "reward", text: "Joins verified creator program with blue badge and featured placement" },
       { stage: "share", text: "Discovers and connects with like-minded creators through hashtag tribes" },
@@ -66,7 +66,7 @@ export const personas: Persona[] = [
     description:
       "Small business owner focused on one specific issue. Uses Facebook, email, and texts but doesn't usually post about politics—becomes relentless when core issue is threatened.",
     loopSteps: [
-      { stage: "trigger", text: "Sees targeted petition ad addressing her core policy concern" },
+      { stage: "trigger", text: "Core policy issue is threatened, needs to take action immediately" },
       { stage: "create", text: "Signs petition and creates mini voter guide in single streamlined flow" },
       { stage: "reward", text: "Receives immediate validation through likes, endorsements, and community support" },
       { stage: "share", text: "Gets multi-channel prompts to share via Facebook, SMS, and WhatsApp" },
@@ -89,7 +89,7 @@ export const personas: Persona[] = [
     description:
       "Marketing professional who votes casually but avoids intense political content. Prefers 'safe' shareable content that won't make them look too political.",
     loopSteps: [
-      { stage: "trigger", text: "Discovers low-stakes Change.vote meme on Reddit" },
+      { stage: "trigger", text: "Stumbles upon relatable, low-stakes political meme in social feed" },
       { stage: "create", text: "Reposts meme to Instagram stories with minimal effort" },
       { stage: "reward", text: "Receives positive social validation (likes, emoji reactions, positive comments)" },
       { stage: "share", text: "Shares to multiple group chats based on social momentum" },
