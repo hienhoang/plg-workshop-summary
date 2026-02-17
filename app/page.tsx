@@ -114,6 +114,7 @@ export default function Page() {
             .
           </p>
         </section>
+        <CommentsSection />
       </article>
     </main>
   )
