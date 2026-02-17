@@ -26,3 +26,12 @@ export default function RootLayout({
     </html>
   )
 }
+
+export const metadata: Metadata = {
+  title: 'PLG Workshop Summary | Change.vote',
+  description: '...',
+  robots: {
+    index: false,
+    follow: false,
+  }
+}
