@@ -7,9 +7,10 @@ interface FlywheelStep {
 
 interface FlywheelProps {
   steps: FlywheelStep[]
+  avatarUrl: string
 }
 
-export function Flywheel({ steps }: FlywheelProps) {
+export function Flywheel({ steps, avatarUrl }: FlywheelProps) {
   const size = 640
   const centerX = size / 2
   const centerY = size / 2
@@ -59,7 +60,13 @@ export function Flywheel({ steps }: FlywheelProps) {
     const rightX = ex + headLen * Math.cos(tangentAngle + 0.55)
     const rightY = ey + headLen * Math.sin(tangentAngle + 0.55)
 
-    return { pathD, tipX, tipY, leftX, leftY, rightX, rightY }
+    // Calculate midpoint for animated arrow
+    const midAngle = (startAngle + endAngle) / 2
+    const midX = centerX + arrowRadius * Math.cos(midAngle)
+    const midY = centerY + arrowRadius * Math.sin(midAngle)
+    const midTangentAngle = midAngle + Math.PI / 2
+
+    return { pathD, tipX, tipY, leftX, leftY, rightX, rightY, midX, midY, midTangentAngle }
   })
 
   return (
@@ -95,13 +102,48 @@ export function Flywheel({ steps }: FlywheelProps) {
                 points={`${arrow.tipX},${arrow.tipY} ${arrow.leftX},${arrow.leftY} ${arrow.rightX},${arrow.rightY}`}
                 fill="hsl(var(--muted-foreground))"
               />
+
+              {/* Animated arrow on path */}
+              <g style={{
+                animation: `moveAlongPath${i} 8s linear infinite`,
+                animationDelay: `${i * (8 / numSteps)}s`
+              }}>
+                <circle
+                  cx={arrow.midX}
+                  cy={arrow.midY}
+                  r="4"
+                  fill="hsl(var(--muted-foreground))"
+                  opacity="0.6"
+                />
+                <polygon
+                  points={`
+                    ${arrow.midX + 6 * Math.cos(arrow.midTangentAngle)},${arrow.midY + 6 * Math.sin(arrow.midTangentAngle)}
+                    ${arrow.midX + 6 * Math.cos(arrow.midTangentAngle - 0.5)},${arrow.midY + 6 * Math.sin(arrow.midTangentAngle - 0.5)}
+                    ${arrow.midX + 6 * Math.cos(arrow.midTangentAngle + 0.5)},${arrow.midY + 6 * Math.sin(arrow.midTangentAngle + 0.5)}
+                  `}
+                  fill="hsl(var(--muted-foreground))"
+                  opacity="0.6"
+                />
+              </g>
             </g>
           ))}
+
+          {/* Define animation paths for moving arrows */}
+          <defs>
+            {arrowPaths.map((arrow, i) => (
+              <path
+                key={`path-${i}`}
+                id={`arrow-path-${i}`}
+                d={arrow.pathD}
+                fill="none"
+              />
+            ))}
+          </defs>
         </svg>
 
-        {/* Center circle */}
+        {/* Center circle with avatar */}
         <div
-          className="absolute flex items-center justify-center rounded-full border-2 border-foreground bg-card z-10"
+          className="absolute flex items-center justify-center rounded-full border-2 border-foreground bg-card z-10 overflow-hidden"
           style={{
             width: 130,
             height: 130,
@@ -110,11 +152,12 @@ export function Flywheel({ steps }: FlywheelProps) {
             animation: 'fadeIn 0.3s ease-out 0.2s both, pulse 0.5s ease-out 0.4s'
           }}
         >
-          <span className="font-sans text-sm font-bold uppercase tracking-wide text-center text-card-foreground leading-tight">
-            Growth
-            <br />
-            Flywheel
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={avatarUrl}
+            alt="Persona avatar"
+            className="w-full h-full object-cover"
+          />
         </div>
 
         {/* Nodes */}
@@ -186,6 +229,38 @@ export function Flywheel({ steps }: FlywheelProps) {
             transform: scale(1.05);
           }
         }
+        
+        ${arrowPaths.map((_, i) => {
+        const fromAngle = nodes[i].angle
+        const toAngle = nodes[(i + 1) % numSteps].angle
+        const adjustedToAngle = toAngle <= fromAngle ? toAngle + 2 * Math.PI : toAngle
+        const gapAngle = 0.18
+        const startAngle = fromAngle + gapAngle
+        const endAngle = adjustedToAngle - gapAngle
+        const arrowRadius = radius - 60
+
+        return `
+            @keyframes moveAlongPath${i} {
+              0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+              }
+              10% {
+                opacity: 0.6;
+              }
+              90% {
+                opacity: 0.6;
+              }
+              100% {
+                transform: translate(
+                  ${(centerX + arrowRadius * Math.cos(endAngle)) - (centerX + arrowRadius * Math.cos(startAngle))}px,
+                  ${(centerY + arrowRadius * Math.sin(endAngle)) - (centerY + arrowRadius * Math.sin(startAngle))}px
+                ) rotate(${((endAngle - startAngle) * 180 / Math.PI)}deg);
+                opacity: 0;
+              }
+            }
+          `
+      }).join('\n')}
       `}</style>
     </div>
   )
