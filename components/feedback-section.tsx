@@ -10,19 +10,20 @@ interface Comment {
   timestamp: number
 }
 
-export function FeedbackSection() {
+export function CommentsSection() {
   const [comments, setComments] = useState<Comment[]>([])
   const [newComment, setNewComment] = useState("")
   const [authorName, setAuthorName] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
+  // Load comments on mount
   useEffect(() => {
     loadComments()
   }, [])
 
   const loadComments = async () => {
     try {
-      const result = await window.storage.get("workshop-feedback", true)
+      const result = await window.storage.get("workshop-comments", true)
       if (result) {
         setComments(JSON.parse(result.value))
       }
@@ -46,7 +47,7 @@ export function FeedbackSection() {
 
       const updatedComments = [...comments, comment]
       await window.storage.set(
-        "workshop-feedback",
+        "workshop-comments",
         JSON.stringify(updatedComments),
         true // shared = true so all execs can see
       )
@@ -63,70 +64,61 @@ export function FeedbackSection() {
   }
 
   return (
-    <section className="mt-16 pt-16 border-t-[3px] border-foreground">
+    <div className="border-t-[3px] border-foreground pt-10">
       <div className="flex items-center gap-3 mb-8">
-        <MessageSquare className="h-7 w-7 text-card-foreground" />
+        <MessageSquare className="h-6 w-6 text-card-foreground" />
         <h2 className="font-serif text-2xl md:text-3xl font-bold text-card-foreground">
           Executive Feedback
         </h2>
+        <span className="font-sans text-sm text-muted-foreground">
+          ({comments.length})
+        </span>
       </div>
 
       <p className="font-serif text-card-foreground/80 leading-relaxed mb-8">
-        Share your thoughts, questions, or suggestions about the workshop findings.
-        All feedback is visible to the team and will help inform our next steps.
+        Share your thoughts, questions, or feedback on the workshop findings. All comments are visible to the team.
       </p>
 
       {/* Comment Form */}
-      <div className="bg-muted p-6 md:p-8 border-2 border-foreground mb-8">
-        <label className="block font-sans text-sm font-bold uppercase tracking-wide mb-2 text-card-foreground">
-          Your Name
-        </label>
+      <div className="bg-muted p-6 border-2 border-foreground mb-8">
         <input
           type="text"
-          placeholder="e.g., Alex Chen"
+          placeholder="Your name"
           value={authorName}
           onChange={(e) => setAuthorName(e.target.value)}
-          className="w-full mb-4 px-4 py-3 font-sans text-base border-2 border-foreground bg-card focus:outline-none focus:ring-2 focus:ring-foreground"
+          className="w-full mb-3 px-4 py-3 font-sans text-sm border-2 border-foreground bg-card focus:outline-none focus:ring-2 focus:ring-foreground"
         />
-
-        <label className="block font-sans text-sm font-bold uppercase tracking-wide mb-2 text-card-foreground">
-          Your Feedback
-        </label>
         <textarea
-          placeholder="Share your thoughts, questions, or suggestions..."
+          placeholder="Add your feedback, questions, or suggestions..."
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
           rows={4}
-          className="w-full mb-4 px-4 py-3 font-sans text-base border-2 border-foreground bg-card focus:outline-none focus:ring-2 focus:ring-foreground resize-none"
+          className="w-full mb-3 px-4 py-3 font-sans text-sm border-2 border-foreground bg-card focus:outline-none focus:ring-2 focus:ring-foreground resize-none"
         />
-
         <button
           onClick={handleSubmitComment}
           disabled={isLoading || !newComment.trim() || !authorName.trim()}
           className="px-6 py-3 font-sans text-sm font-bold uppercase tracking-wide bg-foreground text-background hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
         >
-          {isLoading ? "Posting..." : "Post Feedback"}
+          {isLoading ? "Posting..." : "Post Comment"}
         </button>
       </div>
 
       {/* Comments List */}
       {comments.length > 0 ? (
         <div className="space-y-6">
-          <h3 className="font-sans text-base font-bold uppercase tracking-wide text-card-foreground">
-            All Feedback ({comments.length})
-          </h3>
           {comments
             .sort((a, b) => b.timestamp - a.timestamp)
             .map((comment) => (
               <div
                 key={comment.id}
-                className="border-l-[3px] border-foreground pl-6 py-4"
+                className="border-l-2 border-foreground pl-6 py-2"
               >
                 <div className="flex items-baseline gap-3 mb-2">
                   <span className="font-sans text-base font-bold text-card-foreground">
                     {comment.author}
                   </span>
-                  <span className="font-sans text-sm text-muted-foreground">
+                  <span className="font-sans text-xs text-muted-foreground uppercase tracking-wider">
                     {new Date(comment.timestamp).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
@@ -136,20 +128,19 @@ export function FeedbackSection() {
                     })}
                   </span>
                 </div>
-                <p className="font-serif text-base text-card-foreground leading-relaxed">
+                <p className="font-serif text-card-foreground leading-relaxed">
                   {comment.text}
                 </p>
               </div>
             ))}
         </div>
       ) : (
-        <div className="text-center py-12 border-2 border-foreground border-dashed">
-          <MessageSquare className="h-12 w-12 mx-auto mb-4 text-muted-foreground opacity-50" />
-          <p className="font-sans text-base text-muted-foreground">
+        <div className="text-center py-12 border-2 border-dashed border-muted-foreground/30">
+          <p className="font-sans text-sm text-muted-foreground italic">
             No feedback yet. Be the first to share your thoughts!
           </p>
         </div>
       )}
-    </section>
+    </div>
   )
 }
