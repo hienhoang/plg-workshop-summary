@@ -1,7 +1,7 @@
 "use client"
 
 interface FlywheelProps {
-  steps: Array<{ stage: string; text: string }>
+  steps: string[]
 }
 
 export function Flywheel({ steps }: FlywheelProps) {
@@ -105,6 +105,7 @@ export function Flywheel({ steps }: FlywheelProps) {
 
       {/* Nodes */}
       {nodes.map((node, i) => {
+        const label = i === 0 ? "Trigger" : `Step ${i}`
         return (
           <div
             key={i}
@@ -123,10 +124,10 @@ export function Flywheel({ steps }: FlywheelProps) {
                 color: i === 0 ? "hsl(var(--link))" : "hsl(var(--muted-foreground))",
               }}
             >
-              {node.step.stage}
+              {label}
             </span>
             <span className="font-sans text-xs leading-snug text-card-foreground">
-              {node.step.text}
+              {node.step}
             </span>
           </div>
         )
