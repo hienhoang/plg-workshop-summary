@@ -8,6 +8,7 @@ export interface Persona {
   features: string[]
   featureLabel: string
   avatarUrl: string
+  teamMembers: string[]
 }
 
 export const personas: Persona[] = [
@@ -33,6 +34,7 @@ export const personas: Persona[] = [
       "Print-ready brochures for community meetings and events",
     ],
     featureLabel: "Marketing Channels",
+    teamMembers: ["Luigi", "Jacob", "Christina", "Tristan", "Jason"],
   },
   {
     id: "marcus",
@@ -56,6 +58,7 @@ export const personas: Persona[] = [
       "Community mobilization tools for petitions and candidate support",
     ],
     featureLabel: "Key Features",
+    teamMembers: ["Hien", "Emily", "Dale", "JC"],
   },
   {
     id: "linda",
@@ -79,6 +82,7 @@ export const personas: Persona[] = [
       "Viral feedback loop: popular guides resurface in petitions to drive new creators",
     ],
     featureLabel: "Key Mechanics",
+    teamMembers: ["Nava", "Zhenya", "Nidhi", "Grethel"],
   },
   {
     id: "jason",
@@ -102,6 +106,7 @@ export const personas: Persona[] = [
       "Soft conversion funnel from meme consumer to platform user",
     ],
     featureLabel: "Growth Strategy",
+    teamMembers: ["Devin", "Jack", "Callum", "JJ"],
   },
 ]
 
