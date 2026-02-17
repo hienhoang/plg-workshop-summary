@@ -54,7 +54,7 @@ export function PersonaCard({ persona, expanded, onToggle }: PersonaCardProps) {
           <h4 className="font-sans text-base font-bold uppercase tracking-wide mb-6 text-card-foreground">
             Growth Flywheel
           </h4>
-          <Flywheel steps={persona.loopSteps} />
+          <Flywheel steps={persona.loopSteps} avatarUrl={persona.avatarUrl} />
 
           <h4 className="font-sans text-base font-bold uppercase tracking-wide mt-10 mb-4 text-card-foreground">
             {persona.featureLabel}
