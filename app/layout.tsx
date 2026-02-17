@@ -9,6 +9,10 @@ const _inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 export const metadata: Metadata = {
   title: 'PLG Workshop Summary | Change.vote',
   description: 'Product-Led Growth workshop exploring user motivations, personas, and growth mechanics for organic adoption.',
+  robots: {
+    index: false,
+    follow: false,
+  }
 }
 
 export const viewport: Viewport = {
@@ -25,13 +29,4 @@ export default function RootLayout({
       <body className={`${_lora.variable} ${_inter.variable} font-serif antialiased`}>{children}</body>
     </html>
   )
-}
-
-export const metadata: Metadata = {
-  title: 'PLG Workshop Summary | Change.vote',
-  description: '...',
-  robots: {
-    index: false,
-    follow: false,
-  }
 }
