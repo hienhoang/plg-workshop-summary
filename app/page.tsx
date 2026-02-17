@@ -1,5 +1,6 @@
 import { motivations, patterns } from "@/lib/persona-data"
 import { PersonasSection } from "@/components/personas-section"
+import CommentsSection from "@/components/comments-section"
 
 export default function Page() {
   return (
@@ -113,6 +114,7 @@ export default function Page() {
             .
           </p>
         </section>
+        <CommentsSection />
       </article>
     </main>
   )
