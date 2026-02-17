@@ -49,7 +49,7 @@ export const personas: Persona[] = [
       { stage: "create", text: "Generates location-based social media posts with auto-populated hashtags and tags (@mentions) of Decision Makers" },
       { stage: "reward", text: "Joins verified creator program with blue badge and featured placement" },
       { stage: "share", text: "Connects with like-minded creators through hashtag tribes" },
-      { stage: "amplify", text: "Mobilizes community to create petitions and drive policy change" },
+      { stage: "amplify", text: "Mobilizes community to engage with their voter guides, create petitions and drive policy change" },
     ],
     features: [
       "Verified civic creator profiles with credibility badges",
