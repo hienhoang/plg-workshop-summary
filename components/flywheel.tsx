@@ -1,7 +1,7 @@
 "use client"
 
 interface FlywheelProps {
-  steps: string[]
+  steps: Array<{ stage: string; text: string }>
 }
 
 export function Flywheel({ steps }: FlywheelProps) {
@@ -105,7 +105,6 @@ export function Flywheel({ steps }: FlywheelProps) {
 
       {/* Nodes */}
       {nodes.map((node, i) => {
-        const label = i === 0 ? "Trigger" : `Step ${i}`
         return (
           <div
             key={i}
@@ -118,32 +117,16 @@ export function Flywheel({ steps }: FlywheelProps) {
               padding: "10px 8px",
             }}
           >
-            {nodes.map((node, i) => {
-              return (
-                <div
-                  key={i}
-                  className="absolute bg-card border-2 border-foreground flex flex-col items-center justify-center text-center"
-                  style={{
-                    width: nodeWidth,
-                    minHeight: nodeHalfH * 2,
-                    left: node.x - nodeHalfW,
-                    top: node.y - nodeHalfH,
-                    padding: "10px 8px",
-                  }}
-                >
-                  <span
-                    className="font-sans text-[10px] font-bold uppercase tracking-widest mb-1 text-muted-foreground"
-                  >
-                    {node.step.stage}
-                  </span>
-                  <span className="font-sans text-xs leading-snug text-card-foreground">
-                    {node.step.text}
-                  </span>
-                </div>
-              )
-            })}
+            <span
+              className="font-sans text-[10px] font-bold uppercase tracking-widest mb-1"
+              style={{
+                color: "hsl(var(--muted-foreground))",
+              }}
+            >
+              {node.step.stage}
+            </span>
             <span className="font-sans text-xs leading-snug text-card-foreground">
-              {node.step}
+              {node.step.text}
             </span>
           </div>
         )
