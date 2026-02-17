@@ -1,7 +1,12 @@
 "use client"
 
+interface FlywheelStep {
+  stage: string
+  text: string
+}
+
 interface FlywheelProps {
-  steps: string[]
+  steps: FlywheelStep[]
 }
 
 export function Flywheel({ steps }: FlywheelProps) {
@@ -104,34 +109,31 @@ export function Flywheel({ steps }: FlywheelProps) {
       </div>
 
       {/* Nodes */}
-      {nodes.map((node, i) => {
-        const label = i === 0 ? "Trigger" : `Step ${i}`
-        return (
-          <div
-            key={i}
-            className="absolute bg-card border-2 border-foreground flex flex-col items-center justify-center text-center"
+      {nodes.map((node, i) => (
+        <div
+          key={i}
+          className="absolute bg-card border-2 border-foreground flex flex-col items-center justify-center text-center"
+          style={{
+            width: nodeWidth,
+            minHeight: nodeHalfH * 2,
+            left: node.x - nodeHalfW,
+            top: node.y - nodeHalfH,
+            padding: "10px 8px",
+          }}
+        >
+          <span
+            className="font-sans text-[10px] font-bold uppercase tracking-widest mb-1"
             style={{
-              width: nodeWidth,
-              minHeight: nodeHalfH * 2,
-              left: node.x - nodeHalfW,
-              top: node.y - nodeHalfH,
-              padding: "10px 8px",
+              color: "hsl(var(--muted-foreground))",
             }}
           >
-            <span
-              className="font-sans text-[10px] font-bold uppercase tracking-widest mb-1"
-              style={{
-                color: i === 0 ? "hsl(var(--link))" : "hsl(var(--muted-foreground))",
-              }}
-            >
-              {label}
-            </span>
-            <span className="font-sans text-xs leading-snug text-card-foreground">
-              {node.step}
-            </span>
-          </div>
-        )
-      })}
+            {node.step.stage}
+          </span>
+          <span className="font-sans text-xs leading-snug text-card-foreground">
+            {node.step.text}
+          </span>
+        </div>
+      ))}
     </div>
   )
 }
