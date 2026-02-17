@@ -105,7 +105,6 @@ export function Flywheel({ steps }: FlywheelProps) {
 
       {/* Nodes */}
       {nodes.map((node, i) => {
-        const label = i === 0 ? "Trigger" : `Step ${i}`
         return (
           <div
             key={i}
@@ -124,10 +123,10 @@ export function Flywheel({ steps }: FlywheelProps) {
                 color: i === 0 ? "hsl(var(--link))" : "hsl(var(--muted-foreground))",
               }}
             >
-              {label}
+              {node.step.stage}
             </span>
             <span className="font-sans text-xs leading-snug text-card-foreground">
-              {node.step}
+              {node.step.text}
             </span>
           </div>
         )
