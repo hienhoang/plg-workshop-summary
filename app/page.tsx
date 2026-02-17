@@ -1,5 +1,6 @@
 import { motivations, patterns } from "@/lib/persona-data"
 import { PersonasSection } from "@/components/personas-section"
+import { FeedbackSection } from "@/components/feedback-section"
 
 export default function Page() {
   return (
@@ -28,92 +29,76 @@ export default function Page() {
             </p>
             <p>
               <span className="uppercase tracking-widest font-semibold">Workshop FigJam:</span>{" "}
-              <a
-                href="https://www.figma.com/board/uxzlsXJBLRnGWrp0c19fiq/Elections-Workshop?node-id=98-683&t=vyC871jqpGjy2OIM-1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline underline-offset-2 transition-colors"
-                style={{ color: "hsl(var(--link))" }}
-              >
-                View Board
-              </a>
-            </p>
-          </div>
-        </header>
 
-        {/* Intro */}
-        <blockquote className="font-serif text-lg leading-relaxed italic mb-12 text-card-foreground">
-          This workshop explored user motivations, personas, and growth mechanics
-          for Change.vote{"'"}s organic adoption strategy. The team mapped out four
-          distinct user journeys that connect individual motivations to sharing
-          behaviors, social dynamics, and platform growth opportunities.
-        </blockquote>
-
-        {/* Motivations */}
-        <section>
-          <h2 className="font-serif text-2xl md:text-3xl font-bold mb-8 text-card-foreground">
-            Why People Share Political Content
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {motivations.map((m) => (
-              <div key={m.title} className="border-l-2 border-foreground pl-4">
-                <h3 className="font-sans text-sm font-bold uppercase tracking-wide mb-2 text-card-foreground">
-                  {m.title}
-                </h3>
-                <p className="font-serif text-card-foreground/80 leading-relaxed">
-                  {m.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Personas */}
-        <section className="mt-16">
-          <h2 className="font-serif text-2xl md:text-3xl font-bold mb-10 text-card-foreground">
-            {"User Personas & Growth Flywheels"}
-          </h2>
-          <PersonasSection />
-        </section>
-
-        {/* Patterns */}
-        <section className="mt-16">
-          <h2 className="font-serif text-2xl md:text-3xl font-bold mb-8 text-card-foreground">
-            Key Patterns Across Personas
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {patterns.map((p) => (
-              <div key={p.title} className="border-t-2 border-foreground pt-4">
-                <h3 className="font-sans text-sm font-bold uppercase tracking-wide mb-2 text-card-foreground">
-                  {p.title}
-                </h3>
-                <p className="font-serif text-card-foreground/80 leading-relaxed">
-                  {p.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-        {/* Next Steps */}
-        <section className="mt-16">
-          <h2 className="font-serif text-2xl md:text-3xl font-bold mb-6 text-card-foreground">
-            Next Steps
-          </h2>
-          <p className="font-serif italic text-card-foreground leading-relaxed">
-            {"Nava and Hien will narrow ideas to 2\u20133 MVP concepts and rapidly prototype/test using an AI-first approach. See "}
-            <a
-              href="https://docs.google.com/document/d/1gfyfqgP0eVj88dVL2_mNFXMUt3H-20HlNLzVABWAtVA/edit?tab=t.ejiaqmfhvfe5"
+              href="https://www.figma.com/board/uxzlsXJBLRnGWrp0c19fiq/Elections-Workshop?node-id=98-683&t=vyC871jqpGjy2OIM-1"
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-2 transition-colors"
               style={{ color: "hsl(var(--link))" }}
-            >
-              research plan
+              >
+              View Board
             </a>
-            .
           </p>
-        </section>
-      </article>
-    </main>
+        </div>
+      </header>
+
+      {/* Intro */}
+      <blockquote className="font-serif text-lg leading-relaxed italic mb-12 text-card-foreground">
+        This workshop explored user motivations, personas, and growth mechanics
+        for Change.vote{"'"}s organic adoption strategy. The team mapped out four
+        distinct user journeys that connect individual motivations to sharing
+        behaviors, social dynamics, and platform growth opportunities.
+      </blockquote>
+
+      {/* Motivations */}
+      <section>
+        <h2 className="font-serif text-2xl md:text-3xl font-bold mb-8 text-card-foreground">
+          Why People Share Political Content
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {motivations.map((m) => (
+            <div key={m.title} className="border-l-2 border-foreground pl-4">
+              <h3 className="font-sans text-sm font-bold uppercase tracking-wide mb-2 text-card-foreground">
+                {m.title}
+              </h3>
+              <p className="font-serif text-card-foreground/80 leading-relaxed">
+                {m.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Personas */}
+      <section className="mt-16">
+        <h2 className="font-serif text-2xl md:text-3xl font-bold mb-10 text-card-foreground">
+          {"User Personas & Growth Flywheels"}
+        </h2>
+        <PersonasSection />
+      </section>
+
+      {/* Patterns */}
+      <section className="mt-16">
+        <h2 className="font-serif text-2xl md:text-3xl font-bold mb-8 text-card-foreground">
+          Key Patterns Across Personas
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {patterns.map((p) => (
+            <div key={p.title} className="border-t-2 border-foreground pt-4">
+              <h3 className="font-sans text-sm font-bold uppercase tracking-wide mb-2 text-card-foreground">
+                {p.title}
+              </h3>
+              <p className="font-serif text-card-foreground/80 leading-relaxed">
+                {p.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Feedback Section */}
+      <FeedbackSection />
+    </article>
+    </main >
   )
 }
