@@ -43,9 +43,8 @@ export function PersonaCard({ persona, expanded, onToggle }: PersonaCardProps) {
         >
           {expanded ? "Hide growth flywheel" : "View growth flywheel"}
           <ChevronRight
-            className={`h-4 w-4 shrink-0 transition-transform duration-200 ${
-              expanded ? "rotate-90" : ""
-            }`}
+            className={`h-4 w-4 shrink-0 transition-transform duration-200 ${expanded ? "rotate-90" : ""
+              }`}
           />
         </p>
       </button>
@@ -67,6 +66,13 @@ export function PersonaCard({ persona, expanded, onToggle }: PersonaCardProps) {
               </li>
             ))}
           </ul>
+
+          <h4 className="font-sans text-base font-bold uppercase tracking-wide mt-10 mb-4 text-card-foreground">
+            Team Members
+          </h4>
+          <p className="font-sans text-sm text-muted-foreground">
+            {persona.teamMembers.join(", ")}
+          </p>
         </div>
       )}
     </div>
