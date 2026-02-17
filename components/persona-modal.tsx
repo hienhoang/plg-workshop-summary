@@ -49,7 +49,7 @@ export function PersonaModal({ persona, open, onOpenChange }: PersonaModalProps)
           <h3 className="font-sans text-base font-bold uppercase tracking-wide mb-6 text-card-foreground">
             Growth Flywheel
           </h3>
-          <Flywheel steps={persona.loopSteps} />
+          <Flywheel steps={persona.loopSteps} avatarUrl={persona.avatarUrl} />
 
           <h3 className="font-sans text-base font-bold uppercase tracking-wide mt-10 mb-4 text-card-foreground">
             {persona.featureLabel}
