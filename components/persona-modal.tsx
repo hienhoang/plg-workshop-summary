@@ -61,6 +61,12 @@ export function PersonaModal({ persona, open, onOpenChange }: PersonaModalProps)
               </li>
             ))}
           </ul>
+          <h3 className="font-sans text-base font-bold uppercase tracking-wide mt-10 mb-4 text-card-foreground">
+            Team Members
+          </h3>
+          <p className="font-sans text-sm text-muted-foreground">
+            {persona.teamMembers.join(", ")}
+          </p>
         </div>
       </DialogContent>
     </Dialog>
