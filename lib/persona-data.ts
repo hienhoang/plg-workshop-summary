@@ -46,10 +46,10 @@ export const personas: Persona[] = [
       "Tech worker with 5k+ followers who creates political content daily across multiple platforms.",
     loopSteps: [
       { stage: "trigger", text: "Gets DM invite to creator program or sees sponsored creator content" },
-      { stage: "create", text: "Generates location-based voter guides with auto-populated hashtags and tags (@mentions) of Decision Makers" },
+      { stage: "create", text: "Generates location-based social media posts with auto-populated hashtags and tags (@mentions) of Decision Makers" },
       { stage: "reward", text: "Joins verified creator program with blue badge and featured placement" },
       { stage: "share", text: "Connects with like-minded creators through hashtag tribes" },
-      { stage: "amplify", text: "Mobilizes community to create petitions and drive policy change" },
+      { stage: "amplify", text: "Mobilizes community to engage with their voter guides, create petitions and drive policy change" },
     ],
     features: [
       "Verified civic creator profiles with credibility badges",

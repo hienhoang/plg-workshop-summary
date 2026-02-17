@@ -24,7 +24,7 @@ export default function Page() {
             </p>
             <p>
               <span className="uppercase tracking-widest font-semibold">Attendees:</span>{" "}
-              Nava Friedman, Hien Hoang, Luigi Poole, Zhenya Minkovich, Callum Thomas, Christina O{"'"}Reilly, Dale O{"'"}Connell, Devin Haska, Emily Jakobsen, Jack Thomas, JC Rojas, Tristan Giles, Juan Jo Ruiz Ferrer, Jason Negroni, Jacob Prymek, Nidhi B Samuchiwal {"&"} Grethel Bello Cagnant
+              Hien Hoang, Nava Friedman, Luigi Poole, Zhenya Minkovich, Callum Thomas, Christina O{"'"}Reilly, Dale O{"'"}Connell, Devin Haska, Emily Jakobsen, Jack Thomas, JC Rojas, Tristan Giles, Juan Jo Ruiz Ferrer, Jason Negroni, Jacob Prymek, Nidhi B Samuchiwal {"&"} Grethel Bello Cagnant
             </p>
             <p>
               <span className="uppercase tracking-widest font-semibold">Workshop FigJam:</span>{" "}
